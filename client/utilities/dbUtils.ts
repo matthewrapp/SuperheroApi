@@ -5,7 +5,6 @@ const host = `http://localhost:5288`;
 const uri = `${host}/api/Superhero`;
 
 export async function getSuperheros() {
-   console.log("uri:", uri);
    return fetch(uri)
       .then((res: any) => res.json() as Array<Superhero>)
       .catch((err: any) => {

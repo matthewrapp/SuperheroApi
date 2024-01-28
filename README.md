@@ -23,29 +23,20 @@
    -  Go to `appsettings.json` file & set your database connection string
       -  Make sure the 'User' & 'PASSWORD' values are changed to your local connection details.
 -  I used the dotnet ef package to run migrations to connect my database to my models
-   -  Open your terminal/command line & scaffold the connection string to the models
-   -  `dotnet ef dbcontext scaffold "Server=localhost,1433;Database=SuperHero;TrustServerCertificate=True;User=sa;PASSWORD=<YourStrong@Passw0rd>" Microsoft.EntityFrameworkCore.SqlServer --output-dir Models`
+   -  Open your terminal/command line & scaffold the connection string to the models (the `-f` at the end is to overwrite what's already there)
+   -  `dotnet ef dbcontext scaffold "Server=localhost,1433;Database=SuperHero;TrustServerCertificate=True;User=sa;PASSWORD=<YourStrong@Passw0rd>" Microsoft.EntityFrameworkCore.SqlServer --output-dir Models -f`
    -  NOTE: if `dotnet ef` package doesn't exist, run `dotnet tool install --global dotnet-ef`, then try again. Make sure the connection string, inside the quotes, is correct.
--  Run in terminal/command line `dotnet restore` to download all packages
+-  In terminal/command line, run:
+   -  `dotnet restore` to download all packages
    -  See list of packages in `SuperheroApi.csproj` file
 -  Run in terminal/command line `dotnet run` to get local instance running
 -  In another terminal/command line, cd into the `client` folder
--  Once in the client folder, run `npm run dev` to get local instance of the client running
+-  Once in the client folder, run:
+   -  `npm install` to download the required packages
+   -  `npm run dev` to get local instance of the client running
    -  Make sure in the `client/utilities/dbUtils.ts` file, the variable on top of the page `host` matches the correct port your C# app is running on.
 -  Open webpage, go to `http://localhost:3000` (or whatever port your client is running on), create your first super hero!
 
--  `dotnet new webapi --use-controllers -o SuperheroApi`
--  `dotnet run`
+### Demo Video
 
-# Install Entity Framework
-
--  `dotnet tool install --global dotnet-ef`
--  `dotnet add package Microsoft.EntityFrameworkCore.Design`
--  `dotnet add package Microsoft.EntityFrameworkCore.SqlServer`
-
-# Connect to db
-
--  Scaffold
-   -  `dotnet ef dbcontext scaffold "Server=localhost,1433;Database=SuperHero;TrustServerCertificate=True;User=sa;PASSWORD=<YourStrong@Passw0rd>" Microsoft.EntityFrameworkCore.SqlServer --output-dir Models`
-      <!-- -  `dotnet ef dbcontext scaffold "Server=localhost,1433;Database=SuperHero;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer --output-dir Models` -->
-      <!-- -  `dotnet ef dbcontext scaffold "Server=localhost,1433;Database=SuperHero;Trusted_Connection=True;TrustServerCertificate=True;" Microsoft.EntityFrameworkCore.SqlServer --output-dir Models` -->
+-  Demo of the application (https://www.loom.com/share/187ca3b4579047bc94f3b4202fafb33d?sid=c2633b49-9bee-48a0-9f5e-71eae67d12d6)

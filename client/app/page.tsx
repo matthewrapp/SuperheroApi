@@ -42,6 +42,8 @@ export default function Home() {
 
    const handleSaveSuperHero = async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
+      if (!superheroConfig?.name || !superheroConfig?.name?.length)
+         return alert("Superhero must have a name!");
       const superHeroToSave = { ...superheroConfig };
       superHeroToSave["id"] = window?.crypto
          ? crypto.randomUUID()
@@ -109,7 +111,7 @@ export default function Home() {
 
          <div className="flex flex-col gap-2">
             <Title>Superheros</Title>
-            {!!superheros?.length && (
+            {!!superheros?.length ? (
                <ul className="flex flex-row flex-wrap gap-2">
                   {superheros?.map((sh, i: number) => {
                      return (
@@ -126,6 +128,8 @@ export default function Home() {
                      );
                   })}
                </ul>
+            ) : (
+               <div>No Superheros created yet... Go ahead & create one!</div>
             )}
          </div>
       </main>
