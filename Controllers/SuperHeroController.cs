@@ -23,7 +23,7 @@ public class SuperHeroController : ControllerBase
    [HttpGet]
    public IActionResult Get()
    {
-      var superheros = _CACHE.GetOrCreate("allSuperHeroes", entry =>
+      var superheros = _CACHE.GetOrCreate("allSuperHeros", entry =>
       {
          // cache results for 30 seconds
          entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(30);
@@ -38,12 +38,6 @@ public class SuperHeroController : ControllerBase
    public async Task<IActionResult> GetById(string id)
    {
       var superhero = await _DBContext.SuperHeroes.FindAsync(id);
-      // var superhero = await _CACHE.GetOrCreateAsync("superHeroById", async entry =>
-      // {
-      //    // cache result for 30 seconds
-      //    entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(30);
-      //    return await _DBContext.SuperHeroes.FindAsync(id);
-      // });
       return Ok(superhero);
    }
 
@@ -65,6 +59,14 @@ public class SuperHeroController : ControllerBase
    {
       _DBContext.SuperHeroes.Add(superHeroData);
       await _DBContext.SaveChangesAsync();
+
+      // update the cache when a new superhero is created
+      _CACHE.Set("allSuperHeros", _DBContext.SuperHeroes.ToList(), new MemoryCacheEntryOptions
+      {
+         // catch for 30 seconds
+         AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(30)
+      });
+
       return Ok(true);
    }
 
