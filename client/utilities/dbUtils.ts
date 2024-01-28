@@ -1,7 +1,7 @@
 import { Superhero } from "./types";
 
 // ADD YOUR HOST HERE....
-const host = `http://localhost:5288`;
+const host = `<YOUR C# SERVER>`; // ex) http://localhost:5228 -- NO SLASH AT THE END
 const uri = `${host}/api/Superhero`;
 
 export async function getSuperheros() {

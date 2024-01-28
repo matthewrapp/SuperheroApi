@@ -24,8 +24,10 @@
       -  Make sure the 'User' & 'PASSWORD' values are changed to your local connection details.
 -  I used the dotnet ef package to run migrations to connect my database to my models
    -  Open your terminal/command line & scaffold the connection string to the models (the `-f` at the end is to overwrite what's already there)
-   -  `dotnet ef dbcontext scaffold "Server=localhost,1433;Database=SuperHero;TrustServerCertificate=True;User=sa;PASSWORD=<YourStrong@Passw0rd>" Microsoft.EntityFrameworkCore.SqlServer --output-dir Models -f`
-   -  NOTE: if `dotnet ef` package doesn't exist, run `dotnet tool install --global dotnet-ef`, then try again. Make sure the connection string, inside the quotes, is correct.
+   -  `dotnet ef dbcontext scaffold "Server=localhost,1433;Database=<YOUR DATABASE NAME>;TrustServerCertificate=True;User=<YOUR USER NAME>;PASSWORD=<YOUR PASSWORD>" Microsoft.EntityFrameworkCore.SqlServer --output-dir Models -f`
+   -  NOTES:
+      -  if `dotnet ef` package doesn't exist, run `dotnet tool install --global dotnet-ef`, then try again. Make sure the connection string, inside the quotes, is correct.
+      -  You may have to manually create a database, before running the `scaffold` command, to connect to. I used Docker to install and rung Sql Server, I used Tableplus to connect to Sql Server, & then manually created a Database "SuperHero". Afterwards, I was able to run the `scaffold` command.
 -  In terminal/command line, run:
    -  `dotnet restore` to download all packages
    -  See list of packages in `SuperheroApi.csproj` file
