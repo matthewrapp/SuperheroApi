@@ -57,15 +57,13 @@ export default function Home() {
    };
 
    const handleDeleteSuperHero = async (superhero: Superhero) => {
-      const res: boolean = await deleteSuperhero(superhero?.id);
-      if (res) {
-         setSuperheros((prevState) => {
-            const copy = [...prevState];
-            const ind = copy.findIndex((sh) => sh?.id === superhero?.id);
-            copy.splice(ind, 1);
-            return copy;
-         });
-      }
+      await deleteSuperhero(superhero?.id);
+      setSuperheros((prevState) => {
+         const copy = [...prevState];
+         const ind = copy.findIndex((sh) => sh?.id === superhero?.id);
+         copy.splice(ind, 1);
+         return copy;
+      });
    };
 
    return (
