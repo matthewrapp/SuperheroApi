@@ -23,7 +23,10 @@
    -  Go to `appsettings.json` file & set your database connection string
       -  Make sure the 'User' & 'PASSWORD' values are changed to your local connection details.
 -  I used the dotnet ef package to run migrations to connect my database to my models
-   -  Open your terminal/command line & scaffold the connection string to the models
+   -  Assuming your database is already created, open your terminal/command line & run:
+      -  `dotnet ef database update`
+      -  You should see the 'SuperHeros' table in your database at this point.
+   -  Next, in your terminal/command line & scaffold the connection string to the models
    -  `dotnet ef dbcontext scaffold "Server=localhost,1433;Database=<YOUR DATABASE NAME>;TrustServerCertificate=True;User=<YOUR USER NAME>;PASSWORD=<YOUR PASSWORD>" Microsoft.EntityFrameworkCore.SqlServer --output-dir Models`
    -  NOTES:
       -  if `dotnet ef` package doesn't exist, run `dotnet tool install --global dotnet-ef`, then try again. Make sure the connection string, inside the quotes, is correct.
