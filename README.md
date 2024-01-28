@@ -19,15 +19,16 @@
 
 -  Make sure you are in correct path (Root of the project)
 -  Configuration:
-   -  Go to `client/utilities/dbUtils.ts` file & set your `host` variable to match your C# app.
+   -  Go to `client/utilities/dbUtils.ts` file & set your `host` variable to match your C# app. To find it, quickly run in the terminal/command line `dotnet run`, then you'll see your host. Close the server afterwards becuase it's not going to work at this point.
    -  Go to `appsettings.json` file & set your database connection string
       -  Make sure the 'User' & 'PASSWORD' values are changed to your local connection details.
 -  I used the dotnet ef package to run migrations to connect my database to my models
-   -  Open your terminal/command line & scaffold the connection string to the models (the `-f` at the end is to overwrite what's already there)
-   -  `dotnet ef dbcontext scaffold "Server=localhost,1433;Database=<YOUR DATABASE NAME>;TrustServerCertificate=True;User=<YOUR USER NAME>;PASSWORD=<YOUR PASSWORD>" Microsoft.EntityFrameworkCore.SqlServer --output-dir Models -f`
+   -  Open your terminal/command line & scaffold the connection string to the models
+   -  `dotnet ef dbcontext scaffold "Server=localhost,1433;Database=<YOUR DATABASE NAME>;TrustServerCertificate=True;User=<YOUR USER NAME>;PASSWORD=<YOUR PASSWORD>" Microsoft.EntityFrameworkCore.SqlServer --output-dir Models`
    -  NOTES:
       -  if `dotnet ef` package doesn't exist, run `dotnet tool install --global dotnet-ef`, then try again. Make sure the connection string, inside the quotes, is correct.
       -  You may have to manually create a database, before running the `scaffold` command, to connect to. I used Docker to install and rung Sql Server, I used Tableplus to connect to Sql Server, & then manually created a Database "SuperHero". Afterwards, I was able to run the `scaffold` command.
+      -  If you want to override what's already there, run the previous command again, appending `-f` to the end to force an overwrite.
 -  In terminal/command line, run:
    -  `dotnet restore` to download all packages
    -  See list of packages in `SuperheroApi.csproj` file
