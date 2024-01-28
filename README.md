@@ -14,6 +14,7 @@
 
 -  C# / .NET for the server
 -  React / Nextjs for the client
+-  Tailwind css for easy/quick styling on the client
 
 ### Get Started
 
