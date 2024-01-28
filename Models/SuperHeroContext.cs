@@ -18,19 +18,19 @@ public partial class SuperHeroContext : DbContext
 
    public DbSet<SuperHero> SuperHeroes { get; set; }
 
-   protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-   {
-      if (!optionsBuilder.IsConfigured)
-      {
+   // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+   // {
+   //    if (!optionsBuilder.IsConfigured)
+   //    {
 
-      }
-      // optionsBuilder.UseSqlServer("");
-   }
+   //    }
+   //    // optionsBuilder.UseSqlServer("");
+   // }
 
-   protected override void OnModelCreating(ModelBuilder modelBuilder)
-   {
-      OnModelCreatingPartial(modelBuilder);
-   }
+   // protected override void OnModelCreating(ModelBuilder modelBuilder)
+   // {
+   //    OnModelCreatingPartial(modelBuilder);
+   // }
 
-   partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+   // partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }
