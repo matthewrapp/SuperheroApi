@@ -43,6 +43,8 @@
    -  Make sure in the `client/utilities/dbUtils.ts` file, the variable on top of the page `host` matches the correct port your C# app is running on.
 -  Open webpage, go to `http://localhost:3000` (or whatever port your client is running on), create your first super hero!
 
-### Demo Video
+### When running the program...
 
+-  Create as many superheros as you'd like. (Cache resets when creating a new superhero)
+-  Delete them, refresh to see the cache still work (Cache only last 30 seconds). You know it works if the deleted superhero shows up after refreshing the page. Give it 30 seconds since the last refresh or created superhero, then you'll see the superhero(s) you deleted not be there.
 -  Demo of the application (https://www.loom.com/share/187ca3b4579047bc94f3b4202fafb33d?sid=c2633b49-9bee-48a0-9f5e-71eae67d12d6)
